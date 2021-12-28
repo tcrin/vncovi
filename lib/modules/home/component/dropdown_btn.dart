@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:vncovi/modules/home_test/blocs/state_of_dropdownbutton.dart';
-import 'package:vncovi/modules/home_test/widgets/list_countries_covid_expansiontile.dart';
+import 'package:vncovi/modules/home/blocs/state_of_dropdownbutton.dart';
+import 'package:vncovi/modules/home/component/list_countries_covid_expansiontile.dart';
 import 'package:vncovi/modules/home_test/widgets/monitor_covid.dart';
 import 'package:vncovi/themes/app_colors.dart';
 import 'package:vncovi/themes/app_styles.dart';

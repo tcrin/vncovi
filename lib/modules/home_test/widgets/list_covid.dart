@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vncovi/modules/home_test/blocs/state_of_listview.dart';
-import 'package:vncovi/modules/home_test/widgets/empty.dart';
-import 'package:vncovi/modules/home_test/widgets/error.dart';
+import 'package:vncovi/modules/home/blocs/state_of_listview.dart';
+import 'package:vncovi/modules/home/component/empty.dart';
+import 'package:vncovi/modules/home/component/error.dart';
 import 'package:vncovi/modules/home_test/widgets/monitor_covid.dart';
 
 class ListCountriesCovid extends StatefulWidget {

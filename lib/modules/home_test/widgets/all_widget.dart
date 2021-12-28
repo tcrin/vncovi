@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:vncovi/modules/home_test/widgets/button_directional.dart';
-import 'package:vncovi/modules/home_test/widgets/counter_covid.dart';
+import 'package:vncovi/modules/home/component/counter_covid.dart';
 import 'package:vncovi/modules/home_test/widgets/dropdown_btn.dart';
 import 'package:vncovi/modules/home_test/widgets/list_covid.dart';
 import 'package:vncovi/modules/home_test/widgets/monitor_covid.dart';
 
-import 'list_countries_covid_expansiontile.dart';
+import '../../home/component/list_countries_covid_expansiontile.dart';
 
 class AllWidget extends StatelessWidget {
   const AllWidget({Key? key}) : super(key: key);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vncovi/modules/authentication/login_phone_page.dart';
 import 'package:vncovi/modules/declaration/declaration_page.dart';
 import 'package:vncovi/modules/home/home_page.dart';
 import 'package:vncovi/modules/information/information_covid_page.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       home: Navigator(
         pages: [
           const MaterialPage(
-            child: HomePage(),
+            child: LoginPage(),
           ),
           if (navigation.screenName == RouteName.infoPage)
             const MaterialPage(child: InformationCovidPage()),

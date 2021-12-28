@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vncovi/themes/app_colors.dart';
 
-import 'counter_covid.dart';
+import '../../home/component/counter_covid.dart';
 
 class MonitorCovid extends StatelessWidget {
   const MonitorCovid(
@@ -15,11 +15,11 @@ class MonitorCovid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    print(size);
+    // print(size);
     final wd = size.width;
     final hg = size.height;
-    print(wd);
-    print(hg);
+    // print(wd);
+    // print(hg);
     final wd1 = (wd/2) -15;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vncovi/modules/home_test/blocs/state_of_listview.dart';
-import 'package:vncovi/modules/home_test/widgets/empty.dart';
-import 'package:vncovi/modules/home_test/widgets/error.dart';
-
-import 'monitor_covid.dart';
+import 'package:vncovi/modules/home/blocs/state_of_listview.dart';
+import 'package:vncovi/modules/home/component/empty.dart';
+import 'package:vncovi/modules/home/component/error.dart';
+import '../../home_test/widgets/monitor_covid.dart';
 
 class ListCovidCountriesExpansionTile extends StatefulWidget {
   const ListCovidCountriesExpansionTile({Key? key}) : super(key: key);
@@ -56,11 +55,14 @@ class _ListCovidCountriesExpansionTileState
                                     ),
                                     children: [
                                       MonitorCovid(
-                                        cases: model.countriesCovid![index].cases,
-                                        active: model.countriesCovid![index].active,
-                                        recovered:
-                                        model.countriesCovid![index].recovered,
-                                        deaths: model.countriesCovid![index].deaths,
+                                        cases:
+                                            model.countriesCovid![index].cases,
+                                        active:
+                                            model.countriesCovid![index].active,
+                                        recovered: model
+                                            .countriesCovid![index].recovered,
+                                        deaths:
+                                            model.countriesCovid![index].deaths,
                                       )
                                     ],
                                   );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vncovi/models/countries_covid.dart';
-import 'package:vncovi/modules/home_test/blocs/state_of_dropdownbutton.dart';
+import 'package:vncovi/modules/home/blocs/state_of_dropdownbutton.dart';
 import 'package:vncovi/modules/home_test/widgets/monitor_covid.dart';
 
 class DropdownBtn extends StatefulWidget {
