@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:vncovi/modules/home/home_page.dart';
+import 'package:vncovi/repository/account_repo.dart';
 
 class OTPPage extends StatefulWidget {
   const OTPPage({Key? key, required this.phone, required this.codeDigits})
@@ -32,19 +33,27 @@ class _OTPPageState extends State<OTPPage> {
 
     super.initState();
     verifyPhoneNumber();
-
   }
 
+  String? myUid;
+  String? myPhone;
+//String? token;
   verifyPhoneNumber() async {
-    await FirebaseAuth.instance.verifyPhoneNumber(
+    final FirebaseAuth auth = FirebaseAuth.instance;
+
+    //print('Token user: $token ${token.runtimeType}');
+    await auth.verifyPhoneNumber(
       phoneNumber: '${widget.codeDigits + widget.phone}',
       verificationCompleted: (PhoneAuthCredential credential) async {
         await FirebaseAuth.instance
             .signInWithCredential(credential)
             .then((value) {
           if (value.user != null) {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
           }
         });
       },
@@ -60,6 +69,7 @@ class _OTPPageState extends State<OTPPage> {
         setState(() {
           varificationCode = vID;
         });
+        print('vID user: $vID');
       },
       codeAutoRetrievalTimeout: (String vID) {
         setState(() {
@@ -70,6 +80,7 @@ class _OTPPageState extends State<OTPPage> {
         seconds: 60,
       ),
     );
+
   }
 
   @override
@@ -77,14 +88,14 @@ class _OTPPageState extends State<OTPPage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text('OTP Verification'),
+        title: const Text('OTP Verification'),
       ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 20),
+              margin: const EdgeInsets.only(top: 20),
               child: Center(
                 child: GestureDetector(
                   onTap: () {},
@@ -94,10 +105,10 @@ class _OTPPageState extends State<OTPPage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(40),
+              padding: const EdgeInsets.all(40),
               child: PinPut(
                 fieldsCount: 6,
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                   color: Colors.white,
                   fontSize: 25,
                 ),
@@ -118,19 +129,24 @@ class _OTPPageState extends State<OTPPage> {
                     )
                         .then((value) {
                       if (value.user != null) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => HomePage()));
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ),
+                        );
                       }
                     });
+                    await AccountRepo().postAccountData(myUid!, myPhone!).then((value) => print(value));
                   } catch (e) {
                     FocusScope.of(context).unfocus();
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text('OTP không hợp lệ'),
                         duration: Duration(seconds: 3),
                       ),
                     );
                   }
+
                 },
               ),
             ),

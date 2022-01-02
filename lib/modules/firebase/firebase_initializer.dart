@@ -22,16 +22,18 @@ class _FirebaseState extends State<FirebaseInitializer> {
       future: _initialization,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-
         }
 
         if (snapshot.connectionState == ConnectionState.done) {
           print('firebase ok');
           return widget.child;
         }
+
         print('firebase loading');
-        return const Center(
-          child: CircularProgressIndicator(),
+        return Container(
+          color: Colors.pink,
+          width: 100,
+          height: 100,
         );
       },
     );

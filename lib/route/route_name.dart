@@ -5,4 +5,6 @@ class RouteName {
   static const String qrPage = '/QRPage';
   static const String healthDeclarationPage = '/DeclarationPage';
   static const String vaccinationPage = '/VaccinationPage';
+  static const String loginPage = '/LoginPage';
+  static const String OTPPage = '/OTPPage';
 }

@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:vncovi/components/bottomnav.dart';
 import 'package:vncovi/components/header/header.dart';
+import 'package:vncovi/modules/authentication/login_phone_page.dart';
 import 'package:vncovi/modules/home/component/dropdown_btn.dart';
+import 'package:vncovi/providers/log_provider.dart';
+import 'package:vncovi/repository/account_repo.dart';
 import 'package:vncovi/themes/app_assets.dart';
 import 'package:vncovi/themes/app_colors.dart';
 import 'package:vncovi/themes/app_styles.dart';
@@ -17,18 +20,52 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    postAccount();
+  }
+
+  postAccount() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    User? user = auth.currentUser;
+    final myPhone = user?.phoneNumber;
+    final myUid = user?.uid;
+    const LogProvider('📱').log(myPhone!);
+    const LogProvider('🔒').log(myUid!);
+    // print('Phone of user: $myPhone ${myPhone.runtimeType}');
+    // print('uid of user: $myUid ${myUid.runtimeType}');
+    await AccountRepo()
+        .postAccountData(myUid, myPhone)
+        .then((value) => print(value));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: Drawer(
+        child: ElevatedButton(
+          onPressed: () {
+            FirebaseAuth.instance.signOut();
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => const LoginPage()));
+          },
+          child: const Text('Log out'),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Header(
+            Header(
               textTop: 'Đeo khẩu trang',
               textBottom: 'trước khi ra khỏi nhà',
               image: AppAssets.Drcorona,
+              onTap: () => _scaffoldKey.currentState!.openEndDrawer(),
             ),
-           DropdownBtn(),
+            const DropdownBtn(),
             const SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

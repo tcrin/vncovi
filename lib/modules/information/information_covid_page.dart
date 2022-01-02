@@ -19,6 +19,7 @@ class InformationCovidPage extends StatelessWidget {
               image: AppAssets.coronadr,
               textTop: "Thông tin cần biết",
               textBottom: "về Covid-19.",
+              onTap: ()=>null,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),

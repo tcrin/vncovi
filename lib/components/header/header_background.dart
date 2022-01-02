@@ -7,7 +7,8 @@ class HeaderBackground extends StatelessWidget {
   final String? textTop;
   final String? textBottom;
   final String? image;
-  const HeaderBackground({Key? key,this.textTop,this.textBottom,this.image}) : super(key: key);
+  final GestureTapCallback onTap;
+  const HeaderBackground({Key? key,this.textTop,this.textBottom,this.image,required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class HeaderBackground extends StatelessWidget {
           image: AssetImage(AppAssets.virus),
         ),
       ),
-      child:  HeaderFloating(textTop: textTop,textBottom: textBottom,image: image,),
+      child:  HeaderFloating(textTop: textTop,textBottom: textBottom,image: image,onTap: onTap,),
     );
   }
 }

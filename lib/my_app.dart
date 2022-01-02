@@ -1,18 +1,44 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vncovi/modules/authentication/login_phone_page.dart';
-import 'package:vncovi/modules/declaration/declaration_page.dart';
-import 'package:vncovi/modules/home/home_page.dart';
-import 'package:vncovi/modules/information/information_covid_page.dart';
+import 'package:vncovi/repository/account_repo.dart';
 import 'package:vncovi/route/route_name.dart';
 
 import 'controller/nav_controller.dart';
+import 'modules/declaration/declaration_page.dart';
+import 'modules/home/home_page.dart';
+import 'modules/information/information_covid_page.dart';
 import 'modules/qr/qr_page.dart';
 import 'modules/vaccination/vaccination_page.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Widget? page;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    user();
+  }
+  user()async{
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    User? user = auth.currentUser;
+    print('Kiem tra user: $user');
+
+    if(user != null){
+      page = HomePage();
+    }else{
+      page = LoginPage();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     NavigationController navigation =
@@ -25,8 +51,8 @@ class MyApp extends StatelessWidget {
       ),
       home: Navigator(
         pages: [
-          const MaterialPage(
-            child: LoginPage(),
+          MaterialPage(
+            child: page!, //
           ),
           if (navigation.screenName == RouteName.infoPage)
             const MaterialPage(child: InformationCovidPage()),
@@ -49,3 +75,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

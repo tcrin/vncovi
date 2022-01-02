@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vncovi/modules/home/component/list_countries_covid_expansiontile.dart';
 import 'package:vncovi/themes/app_assets.dart';
 import 'package:vncovi/themes/app_styles.dart';
 
@@ -7,16 +8,21 @@ class HeaderFloating extends StatelessWidget {
   final String? textTop;
   final String? textBottom;
   final String? image;
-  const HeaderFloating({Key? key,this.textTop,this.textBottom,this.image}) : super(key: key);
+  final GestureTapCallback onTap;
+  const HeaderFloating({Key? key, this.textTop, this.textBottom, this.image,required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Align(
-          alignment: Alignment.topRight,
-          child: SvgPicture.asset(AppAssets.menu),
+        InkWell(
+          onTap: onTap,
+          child: Align(
+            alignment: Alignment.topRight,
+            child: SvgPicture.asset(AppAssets.menu),
+          ),
         ),
         const SizedBox(
           height: 20,

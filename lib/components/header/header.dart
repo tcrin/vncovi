@@ -6,8 +6,8 @@ class Header extends StatelessWidget {
   final String? textTop;
   final String? textBottom;
   final String? image;
-
-  const Header({Key? key, this.textTop, this.textBottom, this.image})
+  final GestureTapCallback onTap;
+  const Header({Key? key, this.textTop, this.textBottom, this.image,required this.onTap})
       : super(key: key);
 
   @override
@@ -18,6 +18,7 @@ class Header extends StatelessWidget {
         textTop: textTop,
         textBottom: textBottom,
         image: image,
+        onTap: onTap,
       ),
     );
   }
