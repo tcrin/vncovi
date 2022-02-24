@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:vncovi/components/bottomnav.dart';
 import 'package:vncovi/components/header/header.dart';
+import 'package:vncovi/components/my_drawer.dart';
+import 'package:vncovi/modules/Injections/injections_page.dart';
 import 'package:vncovi/modules/information/widgets/prevent_card.dart';
 import 'package:vncovi/modules/information/widgets/symptom_card.dart';
 import 'package:vncovi/themes/app_assets.dart';
+import 'package:vncovi/themes/app_colors.dart';
 import 'package:vncovi/themes/app_styles.dart';
-class InformationCovidPage extends StatelessWidget {
-  const InformationCovidPage({Key? key}) : super(key: key);
 
+class InformationCovidPage extends StatelessWidget {
+  InformationCovidPage({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,63 +25,117 @@ class InformationCovidPage extends StatelessWidget {
               image: AppAssets.coronadr,
               textTop: "Thông tin cần biết",
               textBottom: "về Covid-19.",
-              onTap: ()=>null,
+              onTap: () => _scaffoldKey.currentState!.openEndDrawer(),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    "Triệu chứng",
+                  const Text(
+                    "Triệu chứng thường gặp",
                     style: AppStyle.kTitleTextStyle,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
+                      children: const <Widget>[
                         SymptomCard(
-                          image: "assets/images/headache.png",
+                          image: AppAssets.headache,
                           title: "Đau đầu",
                           isActive: true,
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(
+                          width: 10,
+                        ),
                         SymptomCard(
-                          image: "assets/images/caugh.png",
+                          image: AppAssets.caugh,
                           title: "Ho",
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(
+                          width: 10,
+                        ),
                         SymptomCard(
-                          image: "assets/images/fever.png",
+                          image: AppAssets.fever,
                           title: "Sốt",
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(
+                          width: 10,
+                        ),
                         SymptomCard(
-                          image: "assets/images/headache.png",
-                          title: "Đau đầu",
-                          isActive: true,
+                          image: "assets/images/caugh.png",
+                          title: "Mất vị giác",
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        SymptomCard(
+                          image: "assets/images/fever.png",
+                          title: "Mất khứu giác",
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Text("Phòng ngừa", style: AppStyle.kTitleTextStyle),
-                  SizedBox(height: 20),
-                  PreventCard(
+                  const SizedBox(height: 20),
+                  Row(
+                    children: [
+                      const Text("Phòng ngừa Covid-19",
+                          style: AppStyle.kTitleTextStyle),
+                      Spacer(),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                              const InjectionsPage(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          "Thông tin vaccine",
+                          style: TextStyle(
+                            color: AppColor.kPrimaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  const PreventCard(
                     text:
-                    "Kể từ khi bắt đầu bùng phát virus coronavirus, một số nơi đã hoàn toàn chấp nhận đeo khẩu trang",
+                        "Kể từ khi bắt đầu bùng phát virus coronavirus, một số nơi đã hoàn toàn chấp nhận đeo khẩu trang",
                     image: "assets/images/wear_mask.png",
                     title: "Đeo khẩu trang",
                   ),
-                  PreventCard(
+                  const PreventCard(
                     text:
-                    "Since the start of the coronavirus outbreak some places have fully embraced wearing facemasks",
+                        " Dung dịch sát khuẩn có cồn có thể gây ngộ độc nếu uống, nuốt. Nên để xa tầm tay trẻ nhỏ và giám sát việc sử dụng.",
                     image: "assets/images/wash_hands.png",
                     title: "Rửa tay bằng dung dịch sát khuẩn",
                   ),
-                  SizedBox(height: 50),
+                  const PreventCard(
+                    text:
+                        "Kể từ khi bắt đầu bùng phát virus coronavirus, một số nơi đã hoàn toàn chấp nhận đeo khẩu trang",
+                    image: "assets/images/wear_mask.png",
+                    title: "Giữ khoảng cách và không tụ tập nơi đông người",
+                  ),
+                  const PreventCard(
+                    text:
+                        " Dung dịch sát khuẩn có cồn có thể gây ngộ độc nếu uống, nuốt. Nên để xa tầm tay trẻ nhỏ và giám sát việc sử dụng.",
+                    image: "assets/images/wash_hands.png",
+                    title: "Khai báo y tế",
+                  ),
+                  const PreventCard(
+                    text:
+                        " Dung dịch sát khuẩn có cồn có thể gây ngộ độc nếu uống, nuốt. Nên để xa tầm tay trẻ nhỏ và giám sát việc sử dụng.",
+                    image: "assets/images/wash_hands.png",
+                    title: "Tiêm Vaccine",
+                  ),
+                  const SizedBox(height: 50),
                 ],
               ),
             )
@@ -83,8 +143,8 @@ class InformationCovidPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: const BottomNav(
-      activeButtonIndex: 1,
-    ),
+        activeButtonIndex: 1,
+      ),
     );
   }
 }

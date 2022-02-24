@@ -27,24 +27,29 @@ class _ListCovidCountriesExpansionTileState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Thông tin dịch bệnh Covid-19'),
+      ),
       body: ChangeNotifierProvider<StateOfListView>(
         create: (_) => _state,
         child: Consumer<StateOfListView>(
           builder: (context, model, child) {
             return model.loading
                 ? const Center(
-                    child: Text(
-                      'Loading',
-                      style: TextStyle(color: Colors.black),
-                    ),
+                    // child: Text(
+                    //   'Loading',
+                    //   style: TextStyle(color: Colors.black),
+                    // ),
+              child: CircularProgressIndicator(
+                color: Colors.indigo,
+              ),
                   )
                 : RefreshIndicator(
                     onRefresh: model.getCovidCountry,
                     child: model.error
-                        ? Error()
+                        ? const Error()
                         : model.countriesCovid!.isEmpty
-                            ? Empty()
+                            ? const Empty()
                             : ListView.builder(
                                 itemCount: model.countriesCovid!.length,
                                 itemBuilder: (context, index) {

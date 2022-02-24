@@ -73,7 +73,6 @@ class StateOfDropdown extends ChangeNotifier {
     setData(newList);
     setselected(newList.first);
     CountriesCovid covidCounties = await _service.getCovidCountry(selected);
-
     setDataCovid(covidCounties.cases!.toInt(), covidCounties.recovered!.toInt(),
         covidCounties.active!.toInt(), covidCounties.deaths!.toInt());
   }

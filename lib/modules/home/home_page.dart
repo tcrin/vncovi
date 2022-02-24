@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vncovi/components/bottomnav.dart';
 import 'package:vncovi/components/header/header.dart';
-import 'package:vncovi/modules/authentication/login_phone_page.dart';
+import 'package:vncovi/components/my_drawer.dart';
+import 'package:vncovi/modules/authentication/login_page.dart';
 import 'package:vncovi/modules/home/component/dropdown_btn.dart';
 import 'package:vncovi/providers/log_provider.dart';
 import 'package:vncovi/repository/account_repo.dart';
@@ -46,16 +47,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      endDrawer: Drawer(
-        child: ElevatedButton(
-          onPressed: () {
-            FirebaseAuth.instance.signOut();
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const LoginPage()));
-          },
-          child: const Text('Log out'),
-        ),
-      ),
+      endDrawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [

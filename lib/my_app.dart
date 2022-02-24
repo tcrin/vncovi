@@ -1,10 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vncovi/modules/authentication/login_phone_page.dart';
-import 'package:vncovi/repository/account_repo.dart';
+import 'package:vncovi/modules/authentication/login_page.dart';
 import 'package:vncovi/route/route_name.dart';
-
 import 'controller/nav_controller.dart';
 import 'modules/declaration/declaration_page.dart';
 import 'modules/home/home_page.dart';
@@ -28,23 +26,26 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     user();
   }
-  user()async{
+
+  user() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     User? user = auth.currentUser;
     print('Kiem tra user: $user');
 
-    if(user != null){
-      page = HomePage();
-    }else{
-      page = LoginPage();
+    if (user != null) {
+      page = const HomePage();
+    } else {
+      page = const LoginPhonePage();
+      // page = LoginPage();
     }
   }
+
   @override
   Widget build(BuildContext context) {
     NavigationController navigation =
         Provider.of<NavigationController>(context);
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.indigo,
@@ -55,13 +56,15 @@ class _MyAppState extends State<MyApp> {
             child: page!, //
           ),
           if (navigation.screenName == RouteName.infoPage)
-            const MaterialPage(child: InformationCovidPage()),
+            MaterialPage(child: InformationCovidPage()),
           if (navigation.screenName == RouteName.qrPage)
-            const MaterialPage(child: QRPage()),
+             const MaterialPage(child: QRPage()),
           if (navigation.screenName == RouteName.healthDeclarationPage)
-            const MaterialPage(child: DeclarationPage()),
+             MaterialPage(child: DeclarationPage()),
           if (navigation.screenName == RouteName.vaccinationPage)
-            const MaterialPage(child: VaccinationPage()),
+             MaterialPage(
+              child: VaccinationPage(),
+            ),
         ],
         onPopPage: (route, result) {
           bool popStatus = route.didPop(result);
@@ -75,4 +78,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-

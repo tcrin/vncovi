@@ -1,5 +1,7 @@
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:vncovi/themes/app_assets.dart';
 
 class FirebaseInitializer extends StatefulWidget {
   final Widget child;
@@ -21,8 +23,7 @@ class _FirebaseState extends State<FirebaseInitializer> {
     return FutureBuilder(
       future: _initialization,
       builder: (context, snapshot) {
-        if (snapshot.hasError) {
-        }
+        if (snapshot.hasError) {}
 
         if (snapshot.connectionState == ConnectionState.done) {
           print('firebase ok');
@@ -31,9 +32,7 @@ class _FirebaseState extends State<FirebaseInitializer> {
 
         print('firebase loading');
         return Container(
-          color: Colors.pink,
-          width: 100,
-          height: 100,
+         color: Colors.white,
         );
       },
     );

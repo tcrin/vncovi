@@ -5,12 +5,13 @@ import 'package:vncovi/route/route_name.dart';
 import 'package:vncovi/themes/app_colors.dart';
 
 class BottomNav extends StatelessWidget {
-  const BottomNav({Key? key,this.activeButtonIndex=0}) : super(key: key);
+  const BottomNav({Key? key, this.activeButtonIndex = 0}) : super(key: key);
   final int activeButtonIndex;
+
   @override
   Widget build(BuildContext context) {
     NavigationController navigationController =
-    Provider.of<NavigationController>(context, listen: false);
+        Provider.of<NavigationController>(context, listen: false);
     return BottomNavigationBar(
       currentIndex: activeButtonIndex,
       onTap: (buttonIndex) {

@@ -20,7 +20,7 @@ class MonitorCovid extends StatelessWidget {
     final hg = size.height;
     // print(wd);
     // print(hg);
-    final wd1 = (wd/2) -15;
+    final wd1 = (wd / 2) - 15;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -28,7 +28,8 @@ class MonitorCovid extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 10,left: 20,right: 5,bottom: 5),
+                padding: const EdgeInsets.only(
+                    top: 10, left: 20, right: 5, bottom: 5),
                 child: SizedBox(
                   height: 130,
                   width: wd1,
@@ -40,9 +41,11 @@ class MonitorCovid extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 5,left: 20,right: 5,bottom: 15),
+                padding: const EdgeInsets.only(
+                    top: 5, left: 20, right: 5, bottom: 15),
                 child: SizedBox(
-                  height: 130, width: wd1,
+                  height: 130,
+                  width: wd1,
                   child: CounterCovid(
                     number: active,
                     color: AppColor.kPrimaryColor,
@@ -57,9 +60,11 @@ class MonitorCovid extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 10,left: 5,right: 20,bottom: 5),
+                padding: const EdgeInsets.only(
+                    top: 10, left: 5, right: 20, bottom: 5),
                 child: SizedBox(
-                  height: 130, width: wd1,
+                  height: 130,
+                  width: wd1,
                   child: CounterCovid(
                     number: recovered,
                     color: AppColor.kRecovercolor,
@@ -68,9 +73,11 @@ class MonitorCovid extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 5,left: 5,right: 20,bottom: 15),
+                padding: const EdgeInsets.only(
+                    top: 5, left: 5, right: 20, bottom: 15),
                 child: SizedBox(
-                  height: 130, width: wd1,
+                  height: 130,
+                  width: wd1,
                   child: CounterCovid(
                     number: deaths,
                     color: AppColor.kDeathColor,

@@ -3,8 +3,13 @@ import 'package:dio/dio.dart';
 class AccountRepo {
   var dio = Dio();
 
-  Future postAccountData(String uid,String phone,{String? fullname,String? birthday,String? avatar,String? gender,String? status }) async {
-    var res = await dio.post('http://192.168.1.6:3000/account',
+  Future postAccountData(String uid, String phone,
+      {String? fullname,
+      String? birthday,
+      String? avatar,
+      String? gender,
+      String? status}) async {
+    var res = await dio.post('http://192.168.1.24:3030/account',
         data: FormData.fromMap({
           "uid": uid,
           "phone": phone,

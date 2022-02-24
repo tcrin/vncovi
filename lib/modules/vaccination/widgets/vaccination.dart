@@ -233,24 +233,24 @@ class _VaccinationState extends State<Vaccination> {
                 String priority_group = priority_groupController.text;
                 String user_vaccination = user_vaccinationController.text;
                 String id_vaccine = id_vaccineController.text;
-                await VaccinationPost()
-                    .postData(
-                        name,
-                        gender,
-                        dob,
-                        phone,
-                        cccd,
-                        bhyt,
-                        address,
-                        occupation,
-                        workplace,
-                        ethnic,
-                        injections,
-                        injection_session,
-                        priority_group,
-                        user_vaccination,
-                        id_vaccine)
-                    .then((value) => print(value));
+                // await VaccinationPost()
+                //     .postData(
+                //         name,
+                //         gender,
+                //         dob,
+                //         phone,
+                //         cccd,
+                //         bhyt,
+                //         address,
+                //         occupation,
+                //         workplace,
+                //         ethnic,
+                //         injections,
+                //         injection_session,
+                //         priority_group,
+                //         user_vaccination,
+                //         id_vaccine)
+                //     .then((value) => print(value));
                 //send data to server
               } else {
                 setState(() {

@@ -29,14 +29,13 @@ class _OTPPageState extends State<OTPPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
-
     super.initState();
     verifyPhoneNumber();
   }
 
   String? myUid;
   String? myPhone;
+
 //String? token;
   verifyPhoneNumber() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
@@ -51,7 +50,7 @@ class _OTPPageState extends State<OTPPage> {
           if (value.user != null) {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => HomePage(),
+                builder: (context) => const HomePage(),
               ),
             );
           }
@@ -61,7 +60,7 @@ class _OTPPageState extends State<OTPPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(e.message.toString()),
-            duration: Duration(seconds: 3),
+            duration: const Duration(seconds: 3),
           ),
         );
       },
@@ -80,7 +79,6 @@ class _OTPPageState extends State<OTPPage> {
         seconds: 60,
       ),
     );
-
   }
 
   @override
@@ -131,12 +129,14 @@ class _OTPPageState extends State<OTPPage> {
                       if (value.user != null) {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => HomePage(),
+                            builder: (context) => const HomePage(),
                           ),
                         );
                       }
                     });
-                    await AccountRepo().postAccountData(myUid!, myPhone!).then((value) => print(value));
+                    await AccountRepo()
+                        .postAccountData(myUid!, myPhone!)
+                        .then((value) => print(value));
                   } catch (e) {
                     FocusScope.of(context).unfocus();
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -146,7 +146,6 @@ class _OTPPageState extends State<OTPPage> {
                       ),
                     );
                   }
-
                 },
               ),
             ),

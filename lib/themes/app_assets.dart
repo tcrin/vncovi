@@ -1,5 +1,4 @@
-
-class AppAssets{
+class AppAssets {
   static const String imagePath = 'assets/images/';
   static const String iconPath = 'assets/icons/';
 
@@ -13,6 +12,8 @@ class AppAssets{
   static const String menu = iconPath + 'menu.svg';
   static const String shape_small = iconPath + 'shape_small.svg';
 
+  static const String vaccine = imagePath + 'vaccine.png';
+  static const String cough = imagePath + 'cough.png';
   static const String caugh = imagePath + 'caugh.png';
   static const String fever = imagePath + 'fever.png';
   static const String headache = imagePath + 'headache.png';
@@ -20,4 +21,6 @@ class AppAssets{
   static const String virus = imagePath + 'virus.png';
   static const String wash_hands = imagePath + 'wash_hands.png';
   static const String wear_mask = imagePath + 'wear_mask.png';
+
+  static const String splash = iconPath + 'vncovi_splash.png';
 }

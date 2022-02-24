@@ -8,9 +8,9 @@ class RouterControl {
       case 'TestPage':
         return MaterialPageRoute(builder: (context) => const HomeTestPage());
       case 'HomePage':
-        return MaterialPageRoute(builder: (context)=> const HomePage());
+        return MaterialPageRoute(builder: (context) => const HomePage());
       case 'InfoPage':
-        //return MaterialPageRoute(builder: (context)=> const ());
+      //return MaterialPageRoute(builder: (context)=> const ());
       default:
         return MaterialPageRoute(builder: (_) {
           return Scaffold(

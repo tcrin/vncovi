@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vncovi/modules/authentication/otp_page.dart';
 import 'package:vncovi/modules/home_test/widgets/button_directional.dart';
 import 'package:vncovi/modules/home/component/counter_covid.dart';
 import 'package:vncovi/modules/home_test/widgets/dropdown_btn.dart';
@@ -6,6 +7,7 @@ import 'package:vncovi/modules/home_test/widgets/list_covid.dart';
 import 'package:vncovi/modules/home_test/widgets/monitor_covid.dart';
 
 import '../../home/component/list_countries_covid_expansiontile.dart';
+import '../../authentication/login_page.dart';
 
 class AllWidget extends StatelessWidget {
   const AllWidget({Key? key}) : super(key: key);
@@ -38,6 +40,14 @@ class AllWidget extends StatelessWidget {
           ButtonDirectional(
             label: 'Dropdownbuton',
             widget: DropdownBtn(),
+          ),
+          ButtonDirectional(
+            label: 'Login Phone',
+            widget: LoginPhonePage(),
+          ),
+          ButtonDirectional(
+            label: 'OTP',
+            widget: OTPPage(phone: '0372610472',codeDigits: 'rrf',),
           ),
         ],
       ),

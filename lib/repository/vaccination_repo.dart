@@ -1,10 +1,25 @@
 import 'package:dio/dio.dart';
 
-class VaccinationPost {
+class VaccinationRepo {
   var dio = Dio();
 
-  Future postData(String fullname,String gender,String birthday,String phone,String cccd,String bhyt,String address , String occupation, String workplace, String ethnic, String injections, String injection_session, String priority_group, String user_vaccination, String id_vaccine) async {
-    var res = await dio.post('http://192.168.1.8:3000/vaccination',
+  Future postData(
+      String fullname,
+      String gender,
+      String birthday,
+      String phone,
+      String cccd,
+      String bhyt,
+      String address,
+      String occupation,
+      String workplace,
+      String ethnic,
+      String injections,
+      String injection_session,
+      String priority_group,
+      String user_vaccination,
+      int id_vaccine) async {
+    var res = await dio.post('http://192.168.1.8:3030/vaccination',
         data: FormData.fromMap({
           "fullname": fullname,
           "gender": gender,
