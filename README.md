@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-![](<img src="image_demo/login.png" width="128"/>)
+![](image_demo/login.png)
 
 ## Getting Started
 
