@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:vncovi/modules/home/blocs/state_of_listview.dart';
 import 'package:vncovi/modules/home/component/empty.dart';
@@ -53,8 +54,9 @@ class _ListCovidCountriesExpansionTileState
                             : ListView.builder(
                                 itemCount: model.countriesCovid!.length,
                                 itemBuilder: (context, index) {
-                                  print(model.countriesCovid![index].cases!);
+                                //  print(model.countriesCovid![index].cases!);
                                   return ExpansionTile(
+                                   // leading: Image.network(model.countriesFlag![index].flag!),
                                     title: Text(
                                       '${model.countriesCovid![index].country}',
                                     ),

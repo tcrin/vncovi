@@ -9,7 +9,7 @@ class AccountRepo {
       String? avatar,
       String? gender,
       String? status}) async {
-    var res = await dio.post('http://192.168.1.24:3030/account',
+    var res = await dio.post('http://192.168.0.6:3000/account',
         data: FormData.fromMap({
           "uid": uid,
           "phone": phone,

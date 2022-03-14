@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:vncovi/models/countries_covid.dart';
+import 'package:vncovi/models/country_info.dart';
 import 'package:vncovi/repository/countries_covid_repo.dart';
 
 
 class StateOfListView extends ChangeNotifier {
   List<CountriesCovid>? _countriesCovid = [];
   List<CountriesCovid>? get countriesCovid => _countriesCovid;
+
+  List<CountryInfo>? _countriesFlag = [];
+  List<CountryInfo>? get countriesFlag => _countriesFlag;
 
   List<String>? _items = [];
   List<String>? get item => _items;
@@ -43,7 +47,7 @@ class StateOfListView extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getAllPost() async {
+  Future<void> getAll() async {
     setLoading(true);
     List<String> newList = await _service.getCountry(
       onError: (message) {
@@ -62,6 +66,11 @@ class StateOfListView extends ChangeNotifier {
         setError(true, message);
         setLoading(false);
       },);
+
+    // List<CountryInfo>? newListFlag = await _service.getFlagCountries( onError: (message) {
+    //   setError(true, message);
+    // },);
+
     setDataCovid(newList);
     setLoading(false);
   }

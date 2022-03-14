@@ -138,13 +138,13 @@ class _OTPPageState extends State<OTPPage> {
                         .postAccountData(myUid!, myPhone!)
                         .then((value) => print(value));
                   } catch (e) {
-                    FocusScope.of(context).unfocus();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('OTP không hợp lệ'),
-                        duration: Duration(seconds: 3),
-                      ),
-                    );
+                    // FocusScope.of(context).unfocus();
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //   const SnackBar(
+                    //     content: Text('OTP không hợp lệ'),
+                    //     duration: Duration(seconds: 3),
+                    //   ),
+                    // );
                   }
                 },
               ),

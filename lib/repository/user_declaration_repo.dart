@@ -16,7 +16,7 @@ class UserDeclarationPost {
       String signs,
       String contactWith,
       String account) async {
-    var res = await dio.post('http://192.168.1.8:3030/declaration',
+    var res = await dio.post('http://192.168.0.6:3000/declaration',
         data: FormData.fromMap({
           "fullname": fullname,
           "gender": gender,

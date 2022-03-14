@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:vncovi/models/vaccine/result.dart';
 import 'package:vncovi/models/vaccine/vaccine.dart';
 
-String url = 'http://192.168.1.8:3030/vaccine';
+String url = 'http://192.168.0.6:3000/vaccine';
 
 class VaccineRepo {
   var dio = Dio();

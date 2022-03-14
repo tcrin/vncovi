@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vncovi/models/countries_covid.dart';
+import 'package:vncovi/models/country_info.dart';
 import 'package:vncovi/repository/countries_covid_repo.dart';
 
 
@@ -38,7 +39,6 @@ class StateOfDropdown extends ChangeNotifier {
     notifyListeners();
   }
 
-
   String _selectedItem = '';
 
   String get selected => _selectedItem;
@@ -47,11 +47,13 @@ class StateOfDropdown extends ChangeNotifier {
     _selectedItem = item;
     notifyListeners();
   }
+  String _flag ='';
   int _caseCovid = 0;
   int _recoverCovid = 0;
   int _activeCovid = 0;
   int _dealtCovid = 0;
 
+  String get flag => _flag;
   int get caseCovid => _caseCovid;
 
   int get recoverCovid => _recoverCovid;
@@ -60,7 +62,8 @@ class StateOfDropdown extends ChangeNotifier {
 
   int get dealtCovid => _dealtCovid;
 
-  void setDataCovid(int caseC, int recoverC, int activeC, int dealtC) {
+  void setDataCovid(String flagC, int caseC, int recoverC, int activeC, int dealtC) {
+    _flag = flagC;
     _caseCovid = caseC;
     _recoverCovid = recoverC;
     _activeCovid = activeC;
@@ -71,16 +74,19 @@ class StateOfDropdown extends ChangeNotifier {
   Future<void> getItemCountry() async {
     List<String> newList = await _service.getCountry();
     setData(newList);
-    setselected(newList.first);
+    //setselected(newList.first);
+    setselected('Vietnam');
     CountriesCovid covidCounties = await _service.getCovidCountry(selected);
-    setDataCovid(covidCounties.cases!.toInt(), covidCounties.recovered!.toInt(),
+    CountryInfo flag = await _service.getFlagCountry(selected);
+    setDataCovid(flag.flag.toString(),covidCounties.cases!.toInt(), covidCounties.recovered!.toInt(),
         covidCounties.active!.toInt(), covidCounties.deaths!.toInt());
   }
 
 
   Future<void> getCovidCountry1() async {
     CountriesCovid covidCounties = await _service.getCovidCountry(selected);
-    setDataCovid(covidCounties.cases!.toInt(), covidCounties.recovered!.toInt(),
+    CountryInfo flag = await _service.getFlagCountry(selected);
+    setDataCovid(flag.flag.toString(),covidCounties.cases!.toInt(), covidCounties.recovered!.toInt(),
         covidCounties.active!.toInt(), covidCounties.deaths!.toInt());
   }
 }

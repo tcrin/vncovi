@@ -7,6 +7,7 @@ import 'package:vncovi/modules/authentication/login_page.dart';
 import 'package:vncovi/modules/home/component/dropdown_btn.dart';
 import 'package:vncovi/providers/log_provider.dart';
 import 'package:vncovi/repository/account_repo.dart';
+import 'package:vncovi/repository/countries_covid_repo.dart';
 import 'package:vncovi/themes/app_assets.dart';
 import 'package:vncovi/themes/app_colors.dart';
 import 'package:vncovi/themes/app_styles.dart';
@@ -22,13 +23,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
+  //final CountriesCovidRepo r = CountriesCovidRepo();
   @override
   void initState() {
     super.initState();
     postAccount();
+    // getFlag();
   }
-
+// getFlag()async{
+//     await r.getFlagCountries();
+// }
   postAccount() async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     User? user = auth.currentUser;

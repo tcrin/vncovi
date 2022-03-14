@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     Expanded(
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: "Số điện thoại",
                         ),

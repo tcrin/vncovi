@@ -21,6 +21,20 @@ CountriesCovid _$CountriesCovidFromJson(Map<String, dynamic> json) =>
       todayRecovered: json['todayRecovered'] as int?,
       active: json['active'] as int?,
       critical: json['critical'] as int?,
+      casesPerOneMillion: json['casesPerOneMillion'] as int?,
+      deathsPerOneMillion: json['deathsPerOneMillion'] as int?,
+      tests: json['tests'] as int?,
+      testsPerOneMillion: json['testsPerOneMillion'] as int?,
+      population: json['population'] as int?,
+      continent: json['continent'] as String?,
+      oneCasePerPeople: json['oneCasePerPeople'] as int?,
+      oneDeathPerPeople: json['oneDeathPerPeople'] as int?,
+      oneTestPerPeople: json['oneTestPerPeople'] as int?,
+      activePerOneMillion: (json['activePerOneMillion'] as num?)?.toDouble(),
+      recoveredPerOneMillion:
+          (json['recoveredPerOneMillion'] as num?)?.toDouble(),
+      criticalPerOneMillion:
+          (json['criticalPerOneMillion'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$CountriesCovidToJson(CountriesCovid instance) =>
@@ -36,4 +50,16 @@ Map<String, dynamic> _$CountriesCovidToJson(CountriesCovid instance) =>
       'todayRecovered': instance.todayRecovered,
       'active': instance.active,
       'critical': instance.critical,
+      'casesPerOneMillion': instance.casesPerOneMillion,
+      'deathsPerOneMillion': instance.deathsPerOneMillion,
+      'tests': instance.tests,
+      'testsPerOneMillion': instance.testsPerOneMillion,
+      'population': instance.population,
+      'continent': instance.continent,
+      'oneCasePerPeople': instance.oneCasePerPeople,
+      'oneDeathPerPeople': instance.oneDeathPerPeople,
+      'oneTestPerPeople': instance.oneTestPerPeople,
+      'activePerOneMillion': instance.activePerOneMillion,
+      'recoveredPerOneMillion': instance.recoveredPerOneMillion,
+      'criticalPerOneMillion': instance.criticalPerOneMillion,
     };

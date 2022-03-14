@@ -34,11 +34,13 @@ class _DropdownBtnState extends State<DropdownBtn> {
 
   @override
   Widget build(BuildContext context) {
+    //Size size = MediaQuery.of(context).size;
     return ChangeNotifierProvider<StateOfDropdown>(
       create: (_) => _state,
       child: Consumer<StateOfDropdown>(
         builder: (context, model, child) {
           String value = model.selected;
+          String imgUrl = model.flag;
           // print(value);
           // _state.getCovidCountry1();
           return Center(
@@ -58,7 +60,13 @@ class _DropdownBtnState extends State<DropdownBtn> {
                   ),
                   child: Row(
                     children: [
-                      SvgPicture.asset('assets/icons/maps-and-flags.svg'),
+                     // SvgPicture.asset('assets/icons/maps-and-flags.svg'),
+                      SizedBox(
+                        width: 30,
+                        height: 30,
+                        child: imgUrl.isEmpty?const Placeholder():Image.network(imgUrl),
+                      ),
+
                       const SizedBox(
                         width: 20,
                       ),

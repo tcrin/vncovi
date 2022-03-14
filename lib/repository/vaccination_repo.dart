@@ -19,7 +19,7 @@ class VaccinationRepo {
       String priority_group,
       String user_vaccination,
       int id_vaccine) async {
-    var res = await dio.post('http://192.168.1.8:3030/vaccination',
+    var res = await dio.post('http://192.168.0.6:3000/vaccination',
         data: FormData.fromMap({
           "fullname": fullname,
           "gender": gender,
